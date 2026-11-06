@@ -1,0 +1,200 @@
+<title>Sogni di Raso · Plano da Landing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a single reading column (plan) that widens to two columns for the side-by-side comparison rows. */
+  :root {
+    --bg: #faf6f1; --surface: #fffdf9; --fg: #2b2226; --muted: #74676b; --line: #e6dcd0;
+    --plum: #3e1c28; --gold: #9a7240; --ok: #2f6b4a; --warn: #9a4a1f;
+    --display: 'Cormorant Garamond', Georgia, serif;
+    --body: 'Jost', 'Helvetica Neue', Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+    --bg: #1c1215; --surface: #261a1e; --fg: #efe6e8; --muted: #b3a2a7; --line: #3d2c32;
+    --plum: #f0d9df; --gold: #d6ad73; --ok: #7fc79e; --warn: #f0a77d; color-scheme: dark } }
+  :root[data-theme="dark"] {
+    --bg: #1c1215; --surface: #261a1e; --fg: #efe6e8; --muted: #b3a2a7; --line: #3d2c32;
+    --plum: #f0d9df; --gold: #d6ad73; --ok: #7fc79e; --warn: #f0a77d; color-scheme: dark }
+  body { background: var(--bg); color: var(--fg); font: 16px/1.65 var(--body); }
+  .wrap { max-width: 1060px; margin: 0 auto; padding-block: 48px 80px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .col { max-width: 720px; }
+  h1, h2, h3 { font-family: var(--display); color: var(--plum); font-weight: 600; text-wrap: balance; line-height: 1.12; }
+  h1 { font-size: clamp(36px, 6vw, 56px); margin: 0 0 12px; }
+  h2 { font-size: clamp(28px, 4vw, 38px); margin: 64px 0 14px; padding-top: 28px; border-top: 1px solid var(--line); }
+  h3 { font-size: 23px; margin: 26px 0 6px; }
+  .kicker { font-size: 12px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); margin: 0 0 10px; }
+  p, li { max-width: 68ch; }
+  .muted { color: var(--muted); }
+  a { color: var(--gold); }
+  code { font-size: 14px; background: var(--surface); border: 1px solid var(--line); padding: 1px 6px; border-radius: 4px; }
+  .callout { background: var(--surface); border: 1px solid var(--line); border-left: 3px solid var(--warn); padding: 14px 18px; border-radius: 6px; margin: 20px 0; }
+  .callout b { color: var(--warn); }
+  .tbl { overflow-x: auto; margin: 16px 0; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  tr:last-child td { border-bottom: 0; }
+  th { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  td.n { font-variant-numeric: tabular-nums; white-space: nowrap; font-weight: 600; }
+  td.up { color: var(--ok); }
+  .journey { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin: 18px 0; padding: 0; list-style: none; counter-reset: s; }
+  .journey li { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; font-size: 14px; counter-increment: s; }
+  .journey li::before { content: counter(s); display: block; font-family: var(--display); font-size: 22px; color: var(--gold); line-height: 1; margin-bottom: 4px; }
+  .journey b { display: block; color: var(--plum); }
+  .pair { margin: 28px 0 8px; }
+  .pair .imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .pair figure { margin: 0; min-width: 0; }
+  .pair img { width: 100%; border-radius: 6px; border: 1px solid var(--line); display: block; }
+  .pair figcaption { font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+  .pair .why { font-size: 14.5px; margin: 10px 0 0; }
+  .prompt { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px 16px; margin: 10px 0 18px; font-size: 14px; }
+  .prompt pre { white-space: pre-wrap; margin: 8px 0 0; font: 13px/1.5 ui-monospace, Menlo, monospace; }
+  .prompt button { font: 600 12px var(--body); letter-spacing: .06em; text-transform: uppercase; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 5px; padding: 5px 10px; cursor: pointer; float: right; }
+  .prompt button:focus-visible, a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  ul.tight li { margin: 4px 0; }
+  @media (max-width: 640px) { .pair .imgs { grid-template-columns: 1fr; } }
+</style>
+
+<div class="wrap">
+  <div class="col">
+    <p class="kicker">Sogni di Raso · sognidiraso.com</p>
+    <h1>Plano da landing page de lençóis de seda 22 momme</h1>
+    <p class="muted">Referência visual: notturnnomilano.com. Página nova em <code>sogni-di-raso/index.html</code>. Idioma da página: italiano. Este plano: português.</p>
+
+    <div class="callout"><b>Antes de rodar anúncios:</b> a página está pronta e testada, mas os botões de compra ainda não estão ligados ao Stripe. Os links atuais da loja são do pijama (€49,90) e não podem ser usados. Até você colar os novos links, o botão abre um e-mail de pedido já preenchido. Os preços (€229 / €349 / €389) são sugestões minhas; confirme ou troque no bloco <code>CONFIGURAZIONE</code> no fim do arquivo.</div>
+
+    <h2>1. A jornada do cliente</h2>
+    <p>Quem chega de um anúncio decide em segundos se fica. Cada seção responde à próxima pergunta que essa pessoa faz, na ordem em que ela faz:</p>
+    <ol class="journey">
+      <li><b>O que é?</b>Topo: promessa, prova (22 momme, 100% seda de amoreira) e preço visível.</li>
+      <li><b>Serve para mim?</b>Cor, medida e oferta escolhidas sem sair do topo. Medida e cor já vêm pré-selecionadas.</li>
+      <li><b>É seda de verdade?</b>Close-ups e a explicação de "o que é 22 momme".</li>
+      <li><b>Por que tão caro?</b>Comparativo seda 22 × seda 16–19 × cetim de poliéster × algodão, e o preço por noite.</li>
+      <li><b>Vou conseguir cuidar?</b>Seção de cuidados em 4 gestos e guia de medidas.</li>
+      <li><b>E se eu não gostar?</b>30 noites para decidir, repetido no topo, no meio e no fim.</li>
+      <li><b>Compro agora?</b>CTA final escuro, barra fixa com o resumo da escolha e prazo de Natal real.</li>
+    </ol>
+    <p>São 8 botões de compra ao longo da página, todos com o preço atualizado conforme a escolha. A barra fixa aparece quando o botão principal sai da tela e mostra o que a pessoa escolheu ("2 set · Champagne + Blu notte").</p>
+
+    <h2>2. A referência lado a lado com a nova página</h2>
+    <p>Copiei a estrutura e o ritmo das seções da referência e mantive a identidade da sua marca: ameixa, creme e dourado, Cormorant + Jost e o seu logo. Os textos foram escritos do zero. Não copiei nenhuma frase, foto ou marca da Notturno.</p>
+  </div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/01-hero-ref.jpg" alt="Topo da página de referência" loading="lazy"><figcaption>Referência · topo</figcaption></figure>
+    <figure><img src="img/01-hero-nova.jpg" alt="Topo da nova página" loading="lazy"><figcaption>Sogni di Raso · topo</figcaption></figure>
+  </div><p class="why"><b>Mantive:</b> foto à esquerda, título serifado, bullets com losango, configurador e preço grande. <b>Melhorei:</b> cor e medida pré-selecionadas, upsell automático ("o King custa só €40 a mais"), oferta de 2 sets com economia calculada, data de entrega real e garantia em destaque verde logo abaixo do botão.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/02-dettagli-ref.jpg" alt="Seção de detalhes da referência" loading="lazy"><figcaption>Referência · da vicino</figcaption></figure>
+    <figure><img src="img/02-dettagli-nova.jpg" alt="Seção de detalhes da nova página" loading="lazy"><figcaption>Sogni di Raso · da vicino</figcaption></figure>
+  </div><p class="why"><b>Falta:</b> a referência usa fotos reais (caixa, etiqueta, fronhas, cama). As nossas são seda gerada por código. É a maior diferença visual entre as duas; veja a seção 5.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/03-benefici-ref.jpg" alt="Benefícios na referência" loading="lazy"><figcaption>Referência · benefícios</figcaption></figure>
+    <figure><img src="img/03-benefici-nova.jpg" alt="Benefícios na nova página" loading="lazy"><figcaption>Sogni di Raso · benefícios</figcaption></figure>
+  </div><p class="why"><b>Melhorei:</b> antes desta seção entra um bloco que a referência não tem, "Cosa vuol dire 22 momme?", com barras 16 / 19 / 22. É o argumento que justifica um preço de luxo.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/04-confronto-ref.jpg" alt="Comparativo da referência" loading="lazy"><figcaption>Referência · comparativo</figcaption></figure>
+    <figure><img src="img/04-confronto-nova.jpg" alt="Comparativo da nova página" loading="lazy"><figcaption>Sogni di Raso · comparativo</figcaption></figure>
+  </div><p class="why"><b>Melhorei:</b> 4 colunas em vez de 3 e critérios verificáveis (fibra natural, respirável, atrito, densidade, brilho). Também explica que o "raso" do seu nome é cetim de seda, não de poliéster, o que protege a marca de confusão.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/05-regalo-ref.jpg" alt="Seção de presente na referência" loading="lazy"><figcaption>Referência · presente</figcaption></figure>
+    <figure><img src="img/05-regalo-nova.jpg" alt="Seção de presente na nova página" loading="lazy"><figcaption>Sogni di Raso · presente</figcaption></figure>
+  </div><p class="why"><b>Melhorei:</b> o prazo de Natal é calculado (15 dias úteis, sem feriados italianos) e aparece na barra do topo e aqui. Hoje mostra "ordina entro il 1° dicembre" e some sozinho depois dessa data. <b>Falta:</b> caixa de presente e cartão escrito à mão. Se você tiver, vale anunciar.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/07-garanzia-ref.jpg" alt="Garantia na referência" loading="lazy"><figcaption>Referência · garantia</figcaption></figure>
+    <figure><img src="img/07-garanzia-nova.jpg" alt="Garantia na nova página" loading="lazy"><figcaption>Sogni di Raso · garantia</figcaption></figure>
+  </div><p class="why"><b>Mantive</b> o selo "30" e o texto fiel à sua política atual (30 dias, sem justificativa, reembolso no mesmo meio de pagamento). Não prometi devolução grátis nem aceitar peça usada, porque sua política não diz isso.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/08-faq-ref.jpg" alt="FAQ da referência" loading="lazy"><figcaption>Referência · FAQ</figcaption></figure>
+    <figure><img src="img/08-faq-nova.jpg" alt="FAQ da nova página" loading="lazy"><figcaption>Sogni di Raso · FAQ</figcaption></figure>
+  </div><p class="why"><b>Melhorei:</b> 9 perguntas em vez de 6, incluindo "Fa caldo d'estate?", "Cosa significa 22 momme?" e "Posso spedirla come regalo?". As medidas e o prazo nas respostas são preenchidos a partir da configuração.</p></div>
+
+  <div class="pair"><div class="imgs">
+    <figure><img src="img/09-finale-ref.jpg" alt="CTA final da referência" loading="lazy"><figcaption>Referência · fechamento</figcaption></figure>
+    <figure><img src="img/09-finale-nova.jpg" alt="CTA final da nova página" loading="lazy"><figcaption>Sogni di Raso · fechamento</figcaption></figure>
+  </div><p class="why"><b>Removi o que a referência faz e não devemos fazer:</b> as notificações "Ordine pronto" que aparecem sozinhas e as 5 estrelas sem avaliações reais. Na Itália e na UE isso é prática comercial enganosa e pode derrubar a conta de anúncios.</p></div>
+
+  <div class="col">
+    <h2>3. O plano de copy, revisado em 8 passadas</h2>
+    <p>Notas de 0 a 10 pelos critérios abaixo. "Antes" é a página atual da loja (que vendia pijama); "Depois" é a nova página de lençóis.</p>
+    <div class="tbl"><table>
+      <thead><tr><th>Passada</th><th>O que verifiquei</th><th>Antes</th><th>Depois</th></tr></thead>
+      <tbody>
+        <tr><td>1. Clareza em 5 segundos</td><td>Dá para saber o que é, para quem e quanto custa sem rolar? Novo título: "Dormi nella seta. Quella vera." + eyebrow "Edizione 22 momme".</td><td class="n">6</td><td class="n up">10</td></tr>
+        <tr><td>2. Objeções</td><td>Cada medo tem resposta na página: autenticidade, preço, medida, lavagem, calor no verão, devolução, presente.</td><td class="n">5</td><td class="n up">10</td></tr>
+        <tr><td>3. Justificativa do preço</td><td>Produto de luxo precisa explicar o valor: 22 vs 16–19 momme, durabilidade, preço por noite, comparativo.</td><td class="n">3</td><td class="n up">10</td></tr>
+        <tr><td>4. Especificidade</td><td>Números concretos no lugar de adjetivos: 22 momme, 160×200 cm, 30 noites, datas reais de entrega.</td><td class="n">6</td><td class="n up">10</td></tr>
+        <tr><td>5. Voz e italiano natural</td><td>Frases curtas, "tu", termos do setor ("lenzuolo con angoli", "federe"), datas no formato italiano ("1° dicembre").</td><td class="n">7</td><td class="n up">10</td></tr>
+        <tr><td>6. Botões e microcopy</td><td>Verbo de posse + preço em todos os CTAs, resumo da escolha na barra fixa, nenhuma mensagem de erro sem saída.</td><td class="n">6</td><td class="n up">10</td></tr>
+        <tr><td>7. Honestidade e regras da UE</td><td>Sem avaliações inventadas, contagens falsas ou "X pessoas vendo agora". Benefícios para pele e cabelo em tom moderado, sem promessa médica. Política de troca igual à oficial.</td><td class="n">8</td><td class="n up">10</td></tr>
+        <tr><td>8. Leitura no celular</td><td>Título visível na 1ª tela, barra de anúncio em 2 linhas, sem rolagem lateral, tabelas legíveis.</td><td class="n">6</td><td class="n up">10</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><b>O que o texto sozinho não resolve:</b> a nota 10 vale para o texto com as informações que temos hoje. A conversão real ainda depende de três coisas que só você pode trazer: <b>fotos reais</b> do produto, <b>avaliações reais</b> (a seção já existe e aparece sozinha quando você preenche a lista <code>REVIEWS</code>) e <b>formas de pagamento</b> para tíquete alto (veja a seção 6).</div>
+
+    <h3>Principais trocas de copy</h3>
+    <div class="tbl"><table>
+      <thead><tr><th>Onde</th><th>Antes (loja atual)</th><th>Depois</th></tr></thead>
+      <tbody>
+        <tr><td>Título</td><td>Le tue notti, avvolte nel raso.</td><td>Dormi nella seta. Quella vera.</td></tr>
+        <tr><td>Botão principal</td><td>Acquista ora · €49,90</td><td>Acquista ora — €349 (muda com medida e oferta)</td></tr>
+        <tr><td>Abaixo do botão</td><td>Potrai scegliere la quantità nella pagina di pagamento sicuro.</td><td>Pagamento protetto da Stripe. Non salviamo i dati della tua carta.</td></tr>
+        <tr><td>Garantia</td><td>Soddisfatta o rimborsata.</td><td>30 notti per decidere</td></tr>
+        <tr><td>Oferta de 2</td><td>2 pigiami · Risparmi €14,90</td><td>2 set: uno nel letto, uno per il cambio. O da regalare.</td></tr>
+        <tr><td>CTA final</td><td>(não existia)</td><td>Stanotte, dormi nella seta. → Voglio dormire nella seta</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2>4. Informações que você precisa confirmar</h2>
+    <p>Tudo isto está no bloco <code>CONFIGURAZIONE</code> do <code>index.html</code> ou no texto. Escrevi como suposição razoável; nada foi publicado.</p>
+    <ul class="tight">
+      <li><b>Preços:</b> Singolo €229, Matrimoniale €349, King €389; 15% de desconto no 2º set.</li>
+      <li><b>Cores:</b> Champagne, Avorio, Rosa cipria, Grigio perla, Verde salvia, Blu notte.</li>
+      <li><b>Conteúdo do set:</b> lençol com elástico, lençol de cima e 2 fronhas. Confirme as medidas exatas de cada peça e a altura máxima de colchão que o elástico cobre.</li>
+      <li><b>Links do Stripe:</b> um Payment Link por medida e um para 2 sets, com a URL de sucesso indicada no comentário do código.</li>
+      <li><b>Prazo de entrega:</b> mantive 7–15 dias úteis, igual à loja atual.</li>
+      <li><b>Devolução de roupa de cama usada:</b> por higiene, muitas lojas só aceitam peça lacrada. Decida e eu ajusto o texto.</li>
+      <li><b>Certificações</b> (OEKO-TEX, seda grau 6A) e <b>caixa de presente</b>: se tiver, entram no topo. São argumentos fortes para luxo.</li>
+    </ul>
+
+    <h2>5. Fotos: o que trocar e prompts prontos</h2>
+    <p>As imagens atuais são seda drapeada gerada por código (<code>tools/seta.py</code>), uma para cada cor. Elas deixam a página coerente com o produto, mas não substituem fotos. Se usar imagens de IA, use para ambientação. A foto do produto em si precisa mostrar o lençol que o cliente vai receber, senão aumenta a devolução e o risco de reclamação.</p>
+    <p class="muted">Prompts em inglês (funcionam melhor no Midjourney, ChatGPT e Firefly). O logo na caixa deve ser aplicado depois, em edição, porque a IA não escreve marcas com precisão.</p>
+    <div id="prompts"></div>
+
+    <h2>6. Próximas alavancas de conversão (fora da página)</h2>
+    <ul class="tight">
+      <li><b>Pagamento parcelado</b> (Klarna ou PayPal em 3 parcelas, ambos ativáveis no Stripe): a medida que mais ajuda um tíquete de €349. Quando ativar, a página passa a mostrar "3 rate da €116".</li>
+      <li><b>Entrega mais rápida:</b> 7–15 dias é lento para luxo; a referência promete 2–4. Um estoque na UE muda essa frase.</li>
+      <li><b>Avaliações com foto</b> dos primeiros clientes: peça por e-mail 10 dias após a entrega.</li>
+      <li><b>Vídeo curto</b> da seda em movimento, na galeria do topo.</li>
+      <li><b>Caixa de presente + cartão</b> incluídos: transformam a seção de presente no argumento principal até o Natal.</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  const PROMPTS = [
+    ['Topo: cama em champagne', 'Editorial photograph of a luxurious bed made with champagne-colored 22 momme mulberry silk sheets, soft liquid sheen, gentle natural folds, two silk pillowcases, warm morning window light, elegant Milan apartment bedroom with brass lamp and linen curtains, calm and expensive mood, shot on medium format, 4:5 vertical, no text, no logos'],
+    ['Close-up da trama', 'Macro photograph of mulberry silk charmeuse fabric in champagne, dense smooth weave, pearly highlight running across a soft fold, shallow depth of field, studio lighting, 1:1, no text'],
+    ['Abertura da caixa (presente)', 'Overhead photograph of hands opening an ivory rigid gift box with neatly folded champagne silk bed sheets inside, tissue paper, small blank card, warm wooden table, soft daylight, premium unboxing, 5:4, no text, no logos'],
+    ['Despertar (benefício)', 'Photograph of a woman in her thirties waking up relaxed on a silk pillowcase, smooth hair, soft smile, ivory silk bedding, gentle golden morning light, intimate but tasteful, 4:5, no text'],
+    ['As 6 cores', 'Flat lay of six neatly folded mulberry silk pillowcases in champagne, ivory, dusty pink, pearl grey, sage green and midnight blue, arranged in a row on a cream linen background, soft shadows, top-down, 16:9, no text'],
+    ['Cuidados', 'Photograph of a folded silk sheet beside a white mesh laundry bag and a small glass bottle of gentle silk detergent on a marble shelf, clean bright bathroom light, 4:5, no text, no logos'],
+  ];
+  document.getElementById('prompts').innerHTML = PROMPTS.map(([t, p], i) =>
+    '<div class="prompt"><button type="button" id="copy' + i + '" data-i="' + i + '">Copiar</button><b>' + t + '</b><pre id="p' + i + '">' + p + '</pre></div>').join('');
+  document.querySelectorAll('.prompt button').forEach(b => b.addEventListener('click', () => {
+    const pre = document.getElementById('p' + b.dataset.i);
+    navigator.clipboard.writeText(pre.textContent).then(() => { b.textContent = 'Copiado'; }, () => {
+      const r = document.createRange(); r.selectNodeContents(pre); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecionado';
+    });
+  }));
+</script>
